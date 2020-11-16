@@ -102,16 +102,21 @@ elif N < 10000000001 :
     scale_factor = 100000000
     str_scale = " (100,000,000s)"   
 
-## comment this region out more
 # Plot the data on three separate curves for S(t), I(t) and R(t)
 fig = plt.figure(facecolor="w")
 ax = fig.add_subplot(111, axisbelow=True)
+# plot S(t) curve
 ax.plot(t, S/scale_factor, 'b', alpha=0.5, lw=2, label='Susceptible Individuals')
+# plot I(t) curve
 ax.plot(t, I/scale_factor, 'r', alpha=0.5, lw=2, label='Infected Individuals')
+# plot R(t) curve
 ax.plot(t, R/scale_factor, 'g', alpha=0.5, lw=2, label='Removed Individuals')
+# add graph title
 fig.suptitle("SIR Model of Coronavirus Pandemic in " + region)
+# add axis titles
 ax.set_xlabel('Days since ' + new_date)
 ax.set_ylabel('Number of People' + str_scale)
+# set bounds for x and y axes
 ax.set_ylim(0, N / scale_factor )
 ax.set_xlim(0,days)
 ax.yaxis.set_tick_params(length=0)
@@ -121,4 +126,5 @@ legend = ax.legend()
 legend.get_frame().set_alpha(0.5)
 for spine in ('top', 'right', 'bottom', 'left'):
     ax.spines[spine].set_visible(True)
+# display graph
 plt.show()
